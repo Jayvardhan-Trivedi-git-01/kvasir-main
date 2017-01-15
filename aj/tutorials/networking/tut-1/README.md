@@ -14,7 +14,7 @@ Type : javac TCPClient   . Press enter.
 
 There should be two class files in the same directory on the successful compilation.
 
-Now, run TCPClient class by typing : java TCPServer.
+Now, run TCPServer class by typing : java TCPServer.
 
 Type : java TCPClient
 
