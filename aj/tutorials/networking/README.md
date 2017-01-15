@@ -1,4 +1,4 @@
-This folder contains the java files (+guide) for unit-1 : Networking.
+This directory contains the java files (+guide) for unit-1 : Networking.
 
 Feel free to fork/branch this repo in case of need.
 
