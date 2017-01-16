@@ -31,6 +31,17 @@ LOCATION: NETWORKING/TUT_3/
 LOCATION : NETWORKING/TUT_4/
 
 
+
+5) Write a client program to send any string from its standard input to the server program. The server program reads the string, finds number of characters and digits and sends it back to client program. Use connection-oriented communication.
+
+LOCATION : NETWORKING/TUT_5/
+
+
+6)Write an application which will retrieve file from server machine and save that file on client machine. File name will be provided by client.
+
+LOCAITON : NETWORKING/TUT_6/
+
+
 Regards,
 
 Jayvardhan.
