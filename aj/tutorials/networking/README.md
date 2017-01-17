@@ -3,6 +3,22 @@ This directory contains the java files (+guide) for unit-1 : Networking.
 Feel free to fork/branch this repo in case of need.
 
 
+EDIT : 1
+18 January 2017 (Wednesday) on 00:01
+
+-added reverse update note approach
+-added date/time plugin to keep track of the changes in readme.md file
+
+-Added one upd demo: 
+
+[
+7)Simple UDP Client-Server socket program.
+
+LOCAITON : NETWORKING/TUT_7/
+]
+
+
+
 
 TUTORIAL LIST : 
 
@@ -40,11 +56,6 @@ LOCATION : NETWORKING/TUT_5/
 6)Write an application which will retrieve file from server machine and save that file on client machine. File name will be provided by client.
 
 LOCAITON : NETWORKING/TUT_6/
-
-
-7)Simple UDP Client-Server socket program.
-
-LOCAITON : NETWORKING/TUT_7/
 
 
 Regards,
