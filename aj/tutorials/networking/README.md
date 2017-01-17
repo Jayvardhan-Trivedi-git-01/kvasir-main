@@ -42,6 +42,11 @@ LOCATION : NETWORKING/TUT_5/
 LOCAITON : NETWORKING/TUT_6/
 
 
+7)Simple UDP Client-Server socket program.
+
+LOCAITON : NETWORKING/TUT_7/
+
+
 Regards,
 
 Jayvardhan.
