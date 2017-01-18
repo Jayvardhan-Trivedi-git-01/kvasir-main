@@ -1,8 +1,12 @@
 # kvasir-main
 
+
+EDIT : Grammar.
+
+
 A public repo of all the collective tutorials for the subject “Advance Java”, semester 6th, GTU, India.
 
-Feel free share, copy, branch the tutorials.
+Feel free to branch, pull or submit issues for these tutorials.
 
 Course Content includes : 
 
