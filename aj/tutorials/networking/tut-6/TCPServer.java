@@ -19,25 +19,13 @@ public class TCPServer {
 		// Read File Contents into contents array
 		byte[] contents;
 		long fileLength = file.length();
-		long current = 0;
 
-		//Compute the file Size
-		while (current != fileLength) {
-			int size = 10000;
-			if (fileLength - current >= size)
-				current += size;
-			else {
-				size = (int) (fileLength - current);
-				current = fileLength;
-			}
-			contents = new byte[size];
-			bis.read(contents, 0, size);
-			os.write(contents);
-		}
-
+		contents = new byte[(int) fileLength];
+		bis.read(contents, 0, (int) fileLength);//Reading from file buffer
+		os.write(contents);//sending it to client
 		os.flush();
-		
-		//CLOSING THE SOCKET
+
+		// CLOSING THE SOCKET
 		socket.close();
 		ssock.close();
 		System.out.println("File sent succesfully!");
