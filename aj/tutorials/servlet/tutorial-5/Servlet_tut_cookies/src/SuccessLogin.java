@@ -34,7 +34,7 @@ public class SuccessLogin extends HttpServlet {
 		}
 
 		RequestDispatcher rd = request.getRequestDispatcher("/logout1.html");
-		rd.include(request, response); // Include Login page if not OK
+		rd.include(request, response); 
 
 	}
 
