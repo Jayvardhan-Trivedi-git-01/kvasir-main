@@ -37,7 +37,7 @@ public class SuccessLogin extends HttpServlet {
 		out.print("<br /> User name from session :  " + uName);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/logout1.html");
-		rd.include(request, response); // Include Login page if not OK
+		rd.include(request, response); 
 
 	}
 
