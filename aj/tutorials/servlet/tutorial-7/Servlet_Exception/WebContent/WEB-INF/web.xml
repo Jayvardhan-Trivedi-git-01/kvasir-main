@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>Servlet_Exception</display-name>
+	<servlet>
+		<description></description>
+		<display-name>GenericError</display-name>
+		<servlet-name>GenericError</servlet-name>
+		<servlet-class>GenericError</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GenericError</servlet-name>
+		<url-pattern>/GenericError</url-pattern>
+	</servlet-mapping>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/GenericError</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.ArithmeticException</exception-type>
+		<location>/ArithmeticError</location>
+	</error-page>
+	<servlet>
+		<description></description>
+		<display-name>SomeServlet</display-name>
+		<servlet-name>SomeServlet</servlet-name>
+		<servlet-class>SomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SomeServlet</servlet-name>
+		<url-pattern>/SomeServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ArithmeticError</display-name>
+		<servlet-name>ArithmeticError</servlet-name>
+		<servlet-class>ArithmeticError</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ArithmeticError</servlet-name>
+		<url-pattern>/ArithmeticError</url-pattern>
+	</servlet-mapping>
+</web-app>
