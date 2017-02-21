@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib>
+  <tlib-version>1.0</tlib-version>
+    <jspversion>1.1</jspversion>
+    <short-name>ct1</short-name>
+    <uri>/WEB-INF/WelcomeTag</uri>
+    <tag>
+        <name>welcome</name>
+        <tag-class>com.jstl.WelcomeTag</tag-class>
+        <body-content>empty</body-content>
+        <info>Simple welcome msg</info>       
+    </tag>
+</taglib>
