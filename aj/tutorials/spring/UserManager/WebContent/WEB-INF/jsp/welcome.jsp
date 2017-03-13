@@ -43,6 +43,10 @@ Your Details are :
 
 			<a href="addNewUser">Add a new user</a>
 
+			<br />
+			<br />
+
+			<a href="listusers">View All Users</a>
 
 		</c:when>
 		<c:otherwise>

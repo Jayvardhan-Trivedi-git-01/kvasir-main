@@ -12,10 +12,7 @@
 <form:form method="POST" action="/UserManager/checkLogin">
 
  <table>
-<!--     <tr> -->
-<%--         <td><form:label path="userID">ID</form:label></td> --%>
-<%--         <td><form:input path="userID" /></td> --%>
-<!--     </tr> -->
+
     <tr>
         <td><form:label path="userName">Name</form:label></td>
         <td><form:input path="userName" /></td>
@@ -24,10 +21,6 @@
         <td><form:label path="userPass">Password</form:label></td>
         <td><form:input path="userPass" /></td>
     </tr> 
-<!--     <tr> -->
-<%--         <td><form:label path="isAuthenticated">Valid user</form:label></td> --%>
-<%--         <td><form:checkbox path="isAuthenticated"/></td> --%>
-<!--     </tr> -->
     <tr>
         <td colspan="2">
             <input type="submit" value="Login"/>

@@ -29,7 +29,7 @@
         <td>${isAuthenticated}</td>
     </tr>
 </table>  
-
-
+<br/>
+<a href="listusers">View All Users</a>
 </body>
 </html>
