@@ -27,7 +27,7 @@ public class UpdateEmp extends HttpServlet {
 			e1.id = Integer.parseInt(request.getParameter("ID"));
 			
 
-			int rowsAffected = objDAO.updateEmployee(e1);
+			int rows = objDAO.updateEmployee(e1);
 
 			
 			response.setContentType("text/html");
@@ -36,7 +36,7 @@ public class UpdateEmp extends HttpServlet {
 			pw.print("<head><title>Employee info</title></head>");
 			pw.println("<body>");
 			pw.println("<br>");
-			if(rowsAffected==1){
+			if(rows==1){
 			 pw.println("<br> Employee Updated Successfully.");
 			}else{
 				pw.println("<br> Failed to update Employee.");

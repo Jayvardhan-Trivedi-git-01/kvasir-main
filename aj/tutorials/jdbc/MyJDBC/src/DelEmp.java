@@ -22,7 +22,7 @@ public class DelEmp extends HttpServlet {
 
 			int delete_ID = Integer.parseInt(request.getParameter("EmpID"));
 			e1.id = delete_ID;
-			int rowsAffected = objDAO.deleteEmployee(e1);
+			int rows = objDAO.deleteEmployee(e1);
 
 			response.setContentType("text/html");
 			PrintWriter pw = response.getWriter();
@@ -30,7 +30,7 @@ public class DelEmp extends HttpServlet {
 			pw.print("<head><title>Employee info</title></head>");
 			pw.println("<body>");
 			pw.println("<br>");
-			if (rowsAffected == 1) {
+			if (rows == 1) {
 				pw.println("<br> Employee Deleted Successfully.");
 			} else {
 				pw.println("<br> Failed to Delete Employee.");

@@ -24,18 +24,15 @@ public class AddEmp extends HttpServlet {
 			e1.age = Integer.parseInt(request.getParameter("age"));
 			e1.isActive = Integer.parseInt(request.getParameter("isActive"));
 			
-			
+			int rows = objDAO.insertEmployee(e1);
 
-			int rowsAffected = objDAO.insertEmployee(e1);
-
-			
 			response.setContentType("text/html");
 			PrintWriter pw = response.getWriter();
 			pw.println("<html>");
 			pw.print("<head><title>Employee info</title></head>");
 			pw.println("<body>");
 			pw.println("<br>");
-			if(rowsAffected==1){
+			if(rows==1){
 			 pw.println("<br> Employee inserted Successfully.");
 			}else{
 				pw.println("<br> Failed to store Employee.");

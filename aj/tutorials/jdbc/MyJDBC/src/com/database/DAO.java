@@ -9,6 +9,7 @@ import com.models.Employee;
 public class DAO {
 	String driverString = "com.mysql.jdbc.Driver";
 	String dbConString = "jdbc:mysql://localhost:3306/mycollegedatabase";
+	// String dbConString = "jdbc:mysql://localhost/newdemodatabase";
 	String username = "root";
 	String password = "admin";
 
@@ -24,64 +25,78 @@ public class DAO {
 		}
 	}
 
-	public int updateEmployee(Employee e){
+	public int updateEmployee(Employee e) {
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
-			int rowsAffected = 
-					stmt.executeUpdate
-					("update  employee set " +
-							" employee.employee_name =\"" 
-							+ e.name + 
-							"\", employee.employee_department = "
-							+ e.departmentID + 
-							", employee.employee_age = "
-							+ e.age + 
-							", employee.employee_isactive = "
-							+ e.isActive + 
-							" where idemployee = " + e.id);
-			
-			return rowsAffected;
+			int rows = stmt.executeUpdate("update  employee set " + " employee.employee_name =\"" + e.name
+					+ "\", employee.employee_department = " + e.departmentID + ", employee.employee_age = " + e.age
+					+ ", employee.employee_isactive = " + e.isActive + " where idemployee = " + e.id);
+
+			return rows;
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 			return -1;
 		}
 	}
-	
-	public Employee getEmployeeBasedOnID(Employee e){
+
+	public Employee getEmployeeBasedOnID(Employee e) {
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("select  * from employee where idemployee = " + e.id);
-			while(rs.next()){
+			while (rs.next()) {
 				e.name = rs.getString("employee_name");
-				e.age= rs.getInt("employee_age");
-				e.departmentID =  rs.getInt("employee_department");
-				e.isActive =  rs.getInt("employee_isactive");				
+				e.age = rs.getInt("employee_age");
+				e.departmentID = rs.getInt("employee_department");
+				e.isActive = rs.getInt("employee_isactive");
 			}
 			return e;
-			
+
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 			return null;
 		}
-		
+
 	}
-	
-	public List<Employee> getAllData_employee() {
-		Statement stmt;
-		LinkedList<Employee> listEmp = new LinkedList<Employee>();
-			
+
+	public List<Employee> getAllData_Employee_prep() {
 		try {
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from employee");
-			while(rs.next()){
+			LinkedList<Employee> listEmp = new LinkedList<Employee>();
+			PreparedStatement ps = con.prepareStatement("select * from employee");
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
 				Employee e1 = new Employee();
 				e1.id = rs.getInt("idemployee");
 				e1.name = rs.getString("employee_name");
-				e1.age= rs.getInt("employee_age");
-				e1.departmentID =  rs.getInt("employee_department");
-				e1.isActive =  rs.getInt("employee_isactive");	
+				e1.age = rs.getInt("employee_age");
+				e1.departmentID = rs.getInt("employee_department");
+				e1.isActive = rs.getInt("employee_isactive");
+				listEmp.add(e1);
+			}
+			return listEmp;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public List<Employee> getAllData_employee() {
+		Statement stmt;
+		LinkedList<Employee> listEmp = new LinkedList<Employee>();
+
+		try {
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from employee");
+			while (rs.next()) {
+				Employee e1 = new Employee();
+				e1.id = rs.getInt("idemployee");
+				e1.name = rs.getString("employee_name");
+				e1.age = rs.getInt("employee_age");
+				e1.departmentID = rs.getInt("employee_department");
+				e1.isActive = rs.getInt("employee_isactive");
 				listEmp.add(e1);
 			}
 			return listEmp;
@@ -107,24 +122,39 @@ public class DAO {
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
-			int rowsAffected = stmt.executeUpdate("delete from employee where idemployee = " + e.id);
-			return rowsAffected;
+			int rows = stmt.executeUpdate("delete from employee where idemployee = " + e.id);
+			return rows;
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 			return -1;
 		}
 	}
 
+	public int insertEmployee_prep(Employee e){
+		try{
+			PreparedStatement ps = con.prepareStatement("insert into employee (employee.employee_name, employee.employee_department,employee.employee_age,employee.employee_isactive) values ( ?, ?, ?,?);");
+		ps.setString(1, e.name);
+		ps.setInt(2, e.departmentID);
+		ps.setInt(3, e.age);
+		ps.setInt(4, e.isActive);
+		int rows = ps.executeUpdate();
+		return rows;
+		}catch(SQLException ex){
+			ex.printStackTrace();
+			return -1;
+		}
+	}
+	
 	public int insertEmployee(Employee e) {
 
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
-			int rowsAffected = stmt
+			int rows = stmt
 					.executeUpdate("insert into employee " + "(employee.employee_name, employee.employee_department,"
 							+ "employee.employee_age,employee.employee_isactive)" + " values " + "( \"" + e.name + "\","
 							+ e.departmentID + "," + e.age + "," + e.isActive + ");");
-			return rowsAffected;
+			return rows;
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 			return -1;
