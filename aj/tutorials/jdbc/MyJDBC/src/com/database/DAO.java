@@ -9,7 +9,7 @@ import com.models.Employee;
 public class DAO {
 	String driverString = "com.mysql.jdbc.Driver";
 	String dbConString = "jdbc:mysql://localhost:3306/mycollegedatabase";
-	// String dbConString = "jdbc:mysql://localhost/newdemodatabase";
+
 	String username = "root";
 	String password = "admin";
 
@@ -40,6 +40,35 @@ public class DAO {
 		}
 	}
 
+	public Employee getEmployeeBasedOnID_call(Employee e) {
+
+		try {
+
+			CallableStatement callableStatement;
+			String procedure = "{call GetEmployeeBasedOnID(?,?,?,?,?)}";
+
+			callableStatement = con.prepareCall(procedure);
+
+			callableStatement.setInt(1, e.id);
+			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(3, java.sql.Types.INTEGER);
+			callableStatement.registerOutParameter(3, java.sql.Types.INTEGER);
+			callableStatement.registerOutParameter(3, java.sql.Types.INTEGER);
+
+			callableStatement.executeUpdate();
+
+			e.name = callableStatement.getString(2);
+			e.departmentID = callableStatement.getInt(3);
+			e.age = callableStatement.getInt(4);
+			e.isActive = callableStatement.getInt(5);
+			return e;
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
 	public Employee getEmployeeBasedOnID(Employee e) {
 		Statement stmt;
 		try {
@@ -55,6 +84,23 @@ public class DAO {
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public ResultSet getAllData_Employee_scrollable() {
+		Statement stmt;
+
+		try {
+
+			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+			ResultSet rs = stmt.executeQuery("select * from employee");
+
+			return rs;
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
 		}
 
@@ -86,7 +132,6 @@ public class DAO {
 	public List<Employee> getAllData_employee() {
 		Statement stmt;
 		LinkedList<Employee> listEmp = new LinkedList<Employee>();
-
 		try {
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from employee");
@@ -130,21 +175,22 @@ public class DAO {
 		}
 	}
 
-	public int insertEmployee_prep(Employee e){
-		try{
-			PreparedStatement ps = con.prepareStatement("insert into employee (employee.employee_name, employee.employee_department,employee.employee_age,employee.employee_isactive) values ( ?, ?, ?,?);");
-		ps.setString(1, e.name);
-		ps.setInt(2, e.departmentID);
-		ps.setInt(3, e.age);
-		ps.setInt(4, e.isActive);
-		int rows = ps.executeUpdate();
-		return rows;
-		}catch(SQLException ex){
+	public int insertEmployee_prep(Employee e) {
+		try {
+			PreparedStatement ps = con.prepareStatement(
+					"insert into employee (employee.employee_name, employee.employee_department,employee.employee_age,employee.employee_isactive) values ( ?, ?, ?,?);");
+			ps.setString(1, e.name);
+			ps.setInt(2, e.departmentID);
+			ps.setInt(3, e.age);
+			ps.setInt(4, e.isActive);
+			int rows = ps.executeUpdate();
+			return rows;
+		} catch (SQLException ex) {
 			ex.printStackTrace();
 			return -1;
 		}
 	}
-	
+
 	public int insertEmployee(Employee e) {
 
 		Statement stmt;
@@ -160,6 +206,18 @@ public class DAO {
 			return -1;
 		}
 
+	}
+
+	public ResultSetMetaData getAllData_employee_resultsetmeta() {
+		Statement stmt;
+		try {
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from employee");
+			return rs.getMetaData();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public void closeConnection() {

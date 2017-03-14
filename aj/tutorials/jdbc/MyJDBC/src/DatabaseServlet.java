@@ -44,6 +44,13 @@ public class DatabaseServlet extends HttpServlet {
 			pw.println("<br>");
 			pw.println("<a href=\"DeleteEmployee.html\"> Delete Employee </a>");
 			pw.println("<br>");
+			pw.println("<a href=\"ViewEmployee.html\"> View Employee </a>");
+			pw.println("<br>");
+			pw.println("<a href=\"ShowMetaDataRS\"> View Meta Data </a>");
+			pw.println("<br>");
+			pw.println("<a href=\"ScrollableRS\"> Scrollable RS </a>");
+			pw.println("<br>");
+			
 			
 			
 			pw.println("</body>");

@@ -49,4 +49,34 @@
     <servlet-name>UpdateEmp</servlet-name>
     <url-pattern>/UpdateEmp</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewEmp</display-name>
+    <servlet-name>ViewEmp</servlet-name>
+    <servlet-class>ViewEmp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewEmp</servlet-name>
+    <url-pattern>/ViewEmp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowMetaDataRS</display-name>
+    <servlet-name>ShowMetaDataRS</servlet-name>
+    <servlet-class>ShowMetaDataRS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowMetaDataRS</servlet-name>
+    <url-pattern>/ShowMetaDataRS</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ScrollableRS</display-name>
+    <servlet-name>ScrollableRS</servlet-name>
+    <servlet-class>ScrollableRS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ScrollableRS</servlet-name>
+    <url-pattern>/ScrollableRS</url-pattern>
+  </servlet-mapping>
 </web-app>
