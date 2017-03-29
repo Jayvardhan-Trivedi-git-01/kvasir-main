@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" > 
+
+<hibernate-mapping>
+   <class name="com.models.Employee" table="employee">
+      
+      <id name="id" type="int" column="idemployee">
+         <generator class="native"/>
+      </id>
+      <property name="name" column="employee_name" type="string"/>
+      <property name="age" column="employee_age" type="int"/>
+      <property name="departmentID" column="employee_department" type="int"/>
+      <property name="isActive" column="employee_isactive" type="int"/>  
+   </class>
+</hibernate-mapping>
